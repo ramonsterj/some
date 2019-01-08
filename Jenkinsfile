@@ -25,7 +25,7 @@ pipeline {
                         serverId: "arti",
                         repo: "gradle-dev-local",
                         deployIvyDescriptors: true,
-                        deployMavemDescriptors: true
+                        deployMavenDescriptors: true
                 )
                 rtGradleRun (
                         usesPlugin: false, // Set to true if the Artifactory Plugin is already defined in build script
