@@ -1,0 +1,44 @@
+def server = Artifactory.server 'arti'
+server.bypassProxy = true
+// If you're using username and password:
+server.credentialsId = 'jenkins'
+
+pipeline {
+    agent any
+    stages {
+        stage("Preparation") {
+            steps {
+                echo("$pchoices")
+                git 'https://github.com/ramonsterj/some.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                echo('Building...')
+                sh './gradlew assemble -Dorg.gradle.daemon.debug=true'
+            }
+        }
+        stage('Publish to Artifactory') {
+            steps {
+                rtUpload (
+                        serverId: "arti",
+                        spec:
+                                """{
+                            "files": [
+                                {
+                                "pattern": "build/libs/*.jar",
+                                "target": "gradle-dev-local"
+                                }
+                            ]
+                        }"""
+                )
+                rtPublishBuildInfo (
+                        serverId: "arti",
+                        group: "uk.org.rspca",
+                        name: "migration",
+                        number: "1.0.0"
+                )
+            }
+        }
+    }
+}

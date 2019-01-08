@@ -27,8 +27,8 @@ allprojects {
 
 group = 'uk.org.rspca'
 version = '1.0'
-def artifactId = projectDir.name
-def versionNumber = version
+//def artifactId = projectDir.name
+//def versionNumber = version
 
 artifactory {
     contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
@@ -61,4 +61,8 @@ publishing {
             from components.java
         }
     }
+}
+
+dependencies {
+    compile 'uk.org.rspca:migration:1.0.0'
 }
