@@ -13,6 +13,12 @@ pipeline {
         }
         stage("Prepare artifactory") {
             steps {
+
+            }
+        }
+        stage('Build') {
+            steps {
+                echo('Building...')
                 rtGradleResolver (
                         id: "rspca-resolver",
                         serverId: "arti",
@@ -24,11 +30,6 @@ pipeline {
                         serverId: "arti",
                         repo: "gradle-dev-local",
                 )
-            }
-        }
-        stage('Build') {
-            steps {
-                echo('Building...')
                 rtGradleRun (
                         usesPlugin: false, // Set to true if the Artifactory Plugin is already defined in build script
                         tool: "Gradle", // Tool name from Jenkins configuration
