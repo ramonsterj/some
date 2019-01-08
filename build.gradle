@@ -13,6 +13,7 @@ buildscript {
 
 plugins {
     id "java"
+    id "maven-publish"
 }
 
 repositories {
