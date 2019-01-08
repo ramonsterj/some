@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage("Preparation") {
             steps {
-                echo("$pchoices")
                 git 'https://github.com/ramonsterj/some.git'
             }
         }
