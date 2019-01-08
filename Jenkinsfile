@@ -15,7 +15,8 @@ pipeline {
             steps {
                 echo('Building...')
                 sh 'chmod +x gradlew'
-                sh './gradlew install'
+                sh './gradlew createPom'
+                sh './gradlew assemble'
             }
         }
         stage('Publish to Artifactory') {

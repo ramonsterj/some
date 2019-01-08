@@ -31,3 +31,13 @@ version = '1.0'
 //dependencies {
 //    compile 'uk.org.rspca:migration:1.0.0'
 //}
+
+task createPom << {
+    pom {
+        project {
+            groupId "$group"
+            artifactId project.name
+            version "$version"
+        }
+    }.writeTo("pom.xml")
+}
