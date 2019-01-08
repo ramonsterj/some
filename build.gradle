@@ -32,9 +32,9 @@ version = '1.0'
 //    compile 'uk.org.rspca:migration:1.0.0'
 //}
 
-task createPom << {
+task createPom {
     pom {
-        project {
+        project  {
             groupId "$group"
             artifactId project.name
             version "$version"

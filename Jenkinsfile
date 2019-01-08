@@ -11,12 +11,36 @@ pipeline {
                 git 'https://github.com/ramonsterj/some.git'
             }
         }
+        stage("Prepare artifactory") {
+            steps {
+                rtGradleResolver (
+                        id: "rspca-resolver",
+                        serverId: "arti",
+                        repo: "gradle-dev"
+                )
+
+                rtGradleDeployer (
+                        id: "respca-deployer",
+                        serverId: "arti",
+                        repo: "gradle-dev-local",
+                )
+            }
+        }
         stage('Build') {
             steps {
                 echo('Building...')
-                sh 'chmod +x gradlew'
-                sh './gradlew createPom'
-                sh './gradlew assemble'
+//                sh 'chmod +x gradlew'
+//                sh './gradlew createPom'
+//                sh './gradlew assemble'
+                rtGradleRun (
+                        usesPlugin: false, // Set to true if the Artifactory Plugin is already defined in build script
+                        tool: GRADLE_TOOL, // Tool name from Jenkins configuration
+                        rootDir: "/",
+                        buildFile: 'build.gradle',
+                        tasks: 'clean artifactoryPublish',
+                        resolverId: "rspca-resolver",
+                        deployerId: "rspca-deployer",
+                )
             }
         }
         stage('Publish to Artifactory') {
