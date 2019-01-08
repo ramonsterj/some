@@ -21,9 +21,6 @@ repositories {
     jcenter()
 }
 
-allprojects {
-    apply plugin: "com.jfrog.artifactory"
-}
 
 group = 'uk.org.rspca'
 version = '1.0'
