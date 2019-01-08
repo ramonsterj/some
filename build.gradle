@@ -13,8 +13,6 @@ buildscript {
 
 plugins {
     id "java"
-    id "maven-publish"
-    id "maven"
 }
 
 repositories {
@@ -24,20 +22,9 @@ repositories {
 
 
 group = 'uk.org.rspca'
-version = '1.0'
-//def artifactId = projectDir.name
-//def versionNumber = version
+version = '1.0.1-SNAPSHOT'
+
 
 //dependencies {
 //    compile 'uk.org.rspca:migration:1.0.0'
 //}
-
-task createPom {
-    pom {
-        project  {
-            groupId "$group"
-            artifactId project.name
-            version "$version"
-        }
-    }.writeTo("pom.xml")
-}

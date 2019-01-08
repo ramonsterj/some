@@ -29,9 +29,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo('Building...')
-//                sh 'chmod +x gradlew'
-//                sh './gradlew createPom'
-//                sh './gradlew assemble'
                 rtGradleRun (
                         usesPlugin: false, // Set to true if the Artifactory Plugin is already defined in build script
                         tool: GRADLE_TOOL, // Tool name from Jenkins configuration
@@ -59,8 +56,6 @@ pipeline {
                 )
                 rtPublishBuildInfo (
                         serverId: "arti",
-                        buildName: 'bob',
-                        buildNumber: '778'
                 )
             }
         }
