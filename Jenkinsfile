@@ -28,7 +28,7 @@ pipeline {
                         deployMavenDescriptors: true
                 )
                 rtGradleRun (
-                        usesPlugin: false, // Set to true if the Artifactory Plugin is already defined in build script
+                        usesPlugin: true, // Set to true if the Artifactory Plugin is already defined in build script
                         tool: "Gradle", // Tool name from Jenkins configuration
 //                        rootDir: "some",
                         buildFile: 'build.gradle',
