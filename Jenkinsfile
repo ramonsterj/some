@@ -14,7 +14,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo('Building...')
-                pwd
+                sh 'pwd'
                 sh './gradlew assemble -Dorg.gradle.daemon.debug=true'
             }
         }
