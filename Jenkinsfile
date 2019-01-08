@@ -34,9 +34,6 @@ pipeline {
                 )
                 rtPublishBuildInfo (
                         serverId: "arti",
-                        group: "uk.org.rspca",
-                        name: "migration",
-                        number: "1.0.0"
                 )
             }
         }
