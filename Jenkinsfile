@@ -36,24 +36,24 @@ pipeline {
                 )
             }
         }
-        stage('Publish to Artifactory') {
-            steps {
-                rtUpload (
-                        serverId: "arti",
-                        spec:
-                                """{
-                            "files": [
-                                {
-                                "pattern": "build/libs/*.jar",
-                                "target": "gradle-dev-local"
-                                }
-                            ]
-                        }"""
-                )
-                rtPublishBuildInfo (
-                        serverId: "arti"
-                )
-            }
-        }
+//        stage('Publish to Artifactory') {
+//            steps {
+//                rtUpload (
+//                        serverId: "arti",
+//                        spec:
+//                                """{
+//                            "files": [
+//                                {
+//                                "pattern": "build/libs/*.jar",
+//                                "target": "gradle-dev-local"
+//                                }
+//                            ]
+//                        }"""
+//                )
+//                rtPublishBuildInfo (
+//                        serverId: "arti"
+//                )
+//            }
+//        }
     }
 }
