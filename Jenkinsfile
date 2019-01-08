@@ -21,7 +21,7 @@ pipeline {
                 )
 
                 rtGradleDeployer (
-                        id: "respca-deployer",
+                        id: "rspca-deployer",
                         serverId: "arti",
                         repo: "gradle-dev-local",
                 )
