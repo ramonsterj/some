@@ -1,8 +1,3 @@
-def server = Artifactory.server 'arti'
-server.bypassProxy = true
-// If you're using username and password:
-server.credentialsId = 'jenkins'
-
 pipeline {
     agent any
     stages {
@@ -18,13 +13,13 @@ pipeline {
                 rtGradleResolver (
                         id: "rspca-resolver",
                         serverId: "arti",
-                        repo: "gradle-dev/"
+                        repo: "gradle-dev"
                 )
 
                 rtGradleDeployer (
                         id: "rspca-deployer",
                         serverId: "arti",
-                        repo: "gradle-dev-local/",
+                        repo: "gradle-dev-local",
                         deployIvyDescriptors: true,
                         deployMavenDescriptors: true
                 )
@@ -40,24 +35,5 @@ pipeline {
                 )
             }
         }
-//        stage('Publish to Artifactory') {
-//            steps {
-//                rtUpload (
-//                        serverId: "arti",
-//                        spec:
-//                                """{
-//                            "files": [
-//                                {
-//                                "pattern": "build/libs/*.jar",
-//                                "target": "gradle-dev-local"
-//                                }
-//                            ]
-//                        }"""
-//                )
-//                rtPublishBuildInfo (
-//                        serverId: "arti"
-//                )
-//            }
-//        }
     }
 }
