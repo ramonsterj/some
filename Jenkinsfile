@@ -15,15 +15,13 @@ pipeline {
             steps {
                 echo('Building...')
                 sh 'chmod +x gradlew'
-                sh './gradlew assemble -Dorg.gradle.daemon.debug=true'
+                sh './gradlew install'
             }
         }
         stage('Publish to Artifactory') {
             steps {
                 rtUpload (
                         serverId: "arti",
-                        publishPom: true,
-                        publishIvy: true,
                         spec:
                                 """{
                             "files": [
