@@ -18,6 +18,19 @@ pipeline {
                 sh './gradlew assemble -Dorg.gradle.daemon.debug=true'
             }
         }
+        stage('Configure Artifactory') {
+            rtGradleResolver (
+                    id: "the-resolver",
+                    serverId: "arti",
+                    repo: "gradle-dev"
+            )
+
+            rtGradleDeployer (
+                    id: "the-deployer",
+                    serverId: "arti",
+                    repo: "gradle-dev-local",
+            )
+        }
         stage('Publish to Artifactory') {
             steps {
                 rtUpload (
