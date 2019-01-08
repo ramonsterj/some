@@ -34,6 +34,8 @@ pipeline {
                 )
                 rtPublishBuildInfo (
                         serverId: "arti",
+                        buildName: 'bob',
+                        buildNumber: '778'
                 )
             }
         }
