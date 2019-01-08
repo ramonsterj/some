@@ -31,7 +31,7 @@ pipeline {
                 echo('Building...')
                 rtGradleRun (
                         usesPlugin: false, // Set to true if the Artifactory Plugin is already defined in build script
-                        tool: GRADLE_TOOL, // Tool name from Jenkins configuration
+                        tool: "Gradle", // Tool name from Jenkins configuration
                         rootDir: "/",
                         buildFile: 'build.gradle',
                         tasks: 'clean artifactoryPublish',
@@ -55,7 +55,7 @@ pipeline {
                         }"""
                 )
                 rtPublishBuildInfo (
-                        serverId: "arti",
+                        serverId: "arti"
                 )
             }
         }
