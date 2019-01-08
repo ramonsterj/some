@@ -9,6 +9,7 @@ pipeline {
         stage("Preparation") {
             steps {
                 git 'https://github.com/ramonsterj/some.git'
+                sh "chmod +x gradlew"
             }
         }
         stage('Build') {
