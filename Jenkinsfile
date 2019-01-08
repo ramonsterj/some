@@ -19,17 +19,19 @@ pipeline {
             }
         }
         stage('Configure Artifactory') {
-            rtGradleResolver (
-                    id: "the-resolver",
-                    serverId: "arti",
-                    repo: "gradle-dev"
-            )
+            steps {
+                rtGradleResolver(
+                        id: "the-resolver",
+                        serverId: "arti",
+                        repo: "gradle-dev"
+                )
 
-            rtGradleDeployer (
-                    id: "the-deployer",
-                    serverId: "arti",
-                    repo: "gradle-dev-local",
-            )
+                rtGradleDeployer(
+                        id: "the-deployer",
+                        serverId: "arti",
+                        repo: "gradle-dev-local",
+                )
+            }
         }
         stage('Publish to Artifactory') {
             steps {
