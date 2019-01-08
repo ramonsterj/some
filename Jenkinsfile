@@ -11,11 +11,6 @@ pipeline {
                 git 'https://github.com/ramonsterj/some.git'
             }
         }
-        stage("Prepare artifactory") {
-            steps {
-
-            }
-        }
         stage('Build') {
             steps {
                 echo('Building...')
