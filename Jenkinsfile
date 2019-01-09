@@ -25,7 +25,7 @@ pipeline {
                         id: "rspca-deployer",
                         serverId: "arti",
                         repo: "gradle-dev-local",
-                        deployIvyDescriptors: true,
+                        deployIvyDescriptors: false,
                         deployMavenDescriptors: true
                 )
                 rtGradleRun (
