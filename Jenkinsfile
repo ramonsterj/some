@@ -34,7 +34,7 @@ pipeline {
 //                        rootDir: "some",
                         useWrapper: true,
                         buildFile: 'build.gradle',
-                        tasks: 'artifactoryPublish',
+                        tasks: 'clean artifactoryPublish',
                         resolverId: "rspca-resolver",
                         deployerId: "rspca-deployer",
                 )
