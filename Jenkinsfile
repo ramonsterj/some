@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Preparation") {
             steps {
-                git 'https://github.com/ramonsterj/some.git'
+//                git 'https://github.com/ramonsterj/some.git'
                 sh "chmod +x gradlew"
             }
         }
