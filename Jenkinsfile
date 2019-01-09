@@ -32,7 +32,7 @@ pipeline {
                         usesPlugin: true, // Set to true if the Artifactory Plugin is already defined in build script
                         tool: "Gradle4", // Tool name from Jenkins configuration
 //                        rootDir: "some",
-                        useWrapper: true,
+                        useWrapper: false,
                         buildFile: 'build.gradle',
                         tasks: 'artifactoryPublish',
                         resolverId: "rspca-resolver",
