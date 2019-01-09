@@ -1,8 +1,3 @@
-def server = Artifactory.server 'arti'
-server.bypassProxy = true
-// If you're using username and password:
-server.credentialsId = 'jenkins'
-
 pipeline {
     agent any
     stages {
@@ -35,7 +30,7 @@ pipeline {
                 )
                 rtGradleRun (
                         usesPlugin: true, // Set to true if the Artifactory Plugin is already defined in build script
-                        tool: "Gradle", // Tool name from Jenkins configuration
+                        tool: "Gradle4", // Tool name from Jenkins configuration
 //                        rootDir: "some",
                         useWrapper: true,
                         buildFile: 'build.gradle',
