@@ -20,7 +20,7 @@ plugins {
 allprojects {
     apply plugin: "com.jfrog.artifactory"
 }
-artifactoryPublish.skip = true
+artifactoryPublish.skip = false
 
 publishing {
     publications {
