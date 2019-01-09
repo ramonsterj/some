@@ -21,6 +21,14 @@ allprojects {
     apply plugin: "com.jfrog.artifactory"
 }
 
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
 artifactory {
     contextUrl = "${artifactory_contextUrl}"   //The base Artifactory URL if not overridden by the publisher/resolver
     publish {
@@ -29,7 +37,6 @@ artifactory {
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
-
         }
     }
     resolve {
@@ -38,7 +45,6 @@ artifactory {
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
-
         }
     }
 }
@@ -52,7 +58,3 @@ repositories {
 group = 'uk.org.rspca'
 version = '1.0.1-SNAPSHOT'
 
-
-//dependencies {
-//    compile 'uk.org.rspca:migration:1.0.0'
-//}
