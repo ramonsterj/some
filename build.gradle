@@ -20,6 +20,7 @@ plugins {
 allprojects {
     apply plugin: "com.jfrog.artifactory"
 }
+artifactoryPublish.skip = true
 
 publishing {
     publications {
@@ -37,6 +38,13 @@ artifactory {
             username = "${artifactory_user}"
             password = "${artifactory_password}"
             maven = true
+        }
+        defaults {
+            publishConfigs('archives') // we always use archives
+            publishArtifacts = true
+            publishBuildInfo = true
+            publishPom = true
+            publishIvy = false
         }
     }
     resolve {
