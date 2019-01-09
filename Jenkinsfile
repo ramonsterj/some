@@ -7,7 +7,12 @@ pipeline {
                 sh "chmod +x gradlew"
             }
         }
-        stage('Build') {
+        stage("Build") {
+            steps {
+                sh "./gradlew clean assemble"
+            }
+        }
+        stage('Publish to Artifactory') {
             steps {
                 echo('Building...')
                 rtGradleResolver (
@@ -29,7 +34,7 @@ pipeline {
 //                        rootDir: "some",
                         useWrapper: true,
                         buildFile: 'build.gradle',
-                        tasks: 'clean artifactoryPublish',
+                        tasks: 'artifactoryPublish',
                         resolverId: "rspca-resolver",
                         deployerId: "rspca-deployer",
                 )
