@@ -22,14 +22,6 @@ allprojects {
 }
 artifactoryPublish.skip = false
 
-//publishing {
-//    publications {
-//        mavenJava(MavenPublication) {
-//            from components.java
-//        }
-//    }
-//}
-
 artifactory {
     publish {
         repository {
@@ -44,12 +36,6 @@ artifactory {
             publishIvy = false
         }
     }
-//    resolve {
-//        repository {
-//            repoKey = 'gradle-dev'
-//            maven = true
-//        }
-//    }
 }
 
 repositories {
